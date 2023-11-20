@@ -17,6 +17,9 @@ vagrant up
 
 ### Проверка
 ```
+vagrant halt
+vagrant up
+vagrant ssh
 [vagrant@centos7 ~]$ df -h
 Filesystem                       Size  Used Avail Use% Mounted on
 devtmpfs                         908M     0  908M   0% /dev
