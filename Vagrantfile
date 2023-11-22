@@ -16,12 +16,9 @@ Vagrant.configure("2") do |config|
     for i in $(seq 0 20 80); do
       sudo bash -c 'parted /dev/md0 mkpart primary ext4 '$i'% '`expr $i + 20`'%'
     done
+    sudo mkdir -p /mnt/part{1,2,3,4,5}    
     for i in $(seq 1 5); do 
-      sudo mkfs.ext4 /dev/md0p$i; 
-    done
-    sudo mkdir -p /mnt/part{1,2,3,4,5}
-    for i in $(seq 1 5); 
-    do 
+     sudo mkfs.ext4 /dev/md0p$i; 
      sudo mount /dev/md0p$i /mnt/part$i; 
      sudo bash -c 'echo "/dev/md0p'$i' /mnt/part'$i'  ext4 defaults" >> /etc/fstab'
     done
